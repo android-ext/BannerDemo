@@ -2,20 +2,19 @@ package krelve.view.kanner;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
-import krelve.view.Kanner;
+import krelve.view.BannerView;
 
 public class MainActivity extends Activity {
     private static final String TAG = "MainActivity";
-    private Kanner kanner;
+    private BannerView kanner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        kanner = (Kanner) findViewById(R.id.kanner);
+        kanner = (BannerView) findViewById(R.id.kanner);
         // kanner.setImagesUrl(new String[] {
         // "http://img04.muzhiwan.com/2015/06/16/upload_557fd293326f5.jpg",
         // "http://img03.muzhiwan.com/2015/06/05/upload_557165f4850cf.png",
@@ -25,9 +24,9 @@ public class MainActivity extends Activity {
         int[] imagesRes = {R.mipmap.a, R.mipmap.b, R.mipmap.c,  R.mipmap.d, R.mipmap.e};
         kanner.setImagesRes(imagesRes);
 
-        kanner.setPageItemClickListener(new Kanner.PageItemClickListener() {
+        kanner.setPageItemClickListener(new BannerView.PageItemClickListener() {
             @Override
-            public void pageItemClick(Kanner kanner, int position) {
+            public void pageItemClick(BannerView bannerView, int position) {
 
                 Toast.makeText(MainActivity.this, "position : " + position, Toast.LENGTH_LONG).show();
             }

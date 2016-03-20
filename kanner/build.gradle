@@ -2,17 +2,17 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.0"
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
-        minSdkVersion 15
+        minSdkVersion 11
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -21,6 +21,22 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.0.0'
+    compile 'com.android.support:appcompat-v7:23.2.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
+}
+
+task makeJar(type: Jar, dependsOn:['build', 'targetJar']) {
+    from file('build/intermediates/classes/release')
+    from fileTree(dir: 'src/main', includes: ['assets/**'])
+    //目标文件名称
+    // krelve.view
+    archiveName = 'un_proguard.jar'
+    destinationDir = file('build/libs')
+    exclude "lbs/tmplibary/BuildConfig.class"
+    exclude "lbs/tmplibary/BuildConfig\$*.class"
+    exclude "**/R.class"
+    exclude "**/R\$*.class"
+    //只导入资源路径集下的部分资源
+    include "lbs/**/*.class"
+    include "assets/**"
 }
