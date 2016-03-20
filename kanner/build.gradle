@@ -25,18 +25,18 @@ dependencies {
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
 }
 
-task makeJar(type: Jar, dependsOn:['build', 'targetJar']) {
-    from file('build/intermediates/classes/release')
-    from fileTree(dir: 'src/main', includes: ['assets/**'])
-    //目标文件名称
-    // krelve.view
-    archiveName = 'un_proguard.jar'
-    destinationDir = file('build/libs')
-    exclude "lbs/tmplibary/BuildConfig.class"
-    exclude "lbs/tmplibary/BuildConfig\$*.class"
-    exclude "**/R.class"
-    exclude "**/R\$*.class"
-    //只导入资源路径集下的部分资源
-    include "lbs/**/*.class"
-    include "assets/**"
-}
+//task makeJar(type: Jar, dependsOn:['build', 'targetJar']) {
+//    from file('build/intermediates/classes/release')
+//    from fileTree(dir: 'src/main', includes: ['assets/**'])
+//    //目标文件名称
+//    // krelve.view
+//    archiveName = 'un_proguard.jar'
+//    destinationDir = file('build/libs')
+//    exclude "lbs/tmplibary/BuildConfig.class"
+//    exclude "lbs/tmplibary/BuildConfig\$*.class"
+//    exclude "**/R.class"
+//    exclude "**/R\$*.class"
+//    //只导入资源路径集下的部分资源
+//    include "lbs/**/*.class"
+//    include "assets/**"
+//}
